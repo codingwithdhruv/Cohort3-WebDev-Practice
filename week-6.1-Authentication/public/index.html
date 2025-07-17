@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    async function signup() {
+        const username = document.getElementById("signup-username").value;
+        const password = document.getElementById("signup-password").value;
+        const response = await axios.post("http://localhost:3000/signup", {username, password});
+        alert("You are signed in");
+    }
+    async function signin() {
+        const username = document.getElementById("signin-username").value;
+        const password = document.getElementById("signin-password").value;
+        const response = await axios.post("http://localhost:3000/signin", {username, password});
+        localStorage.setItem("token", response.data.token);
+        getUserInformation();
+        alert("You are signed in");        
+    }
+    async function getUserInformation() {
+        const response = await axios.get("http://localhost:3000/me", {
+            headers: {
+                token: localStorage.getItem("token")
+            }
+        })
+        document.getElementById("information").innerHTML = "Username: " + response.data.username
+    }
+    function logout() {
+        localStorage.removeItem('token');
+        document.getElementById("information").innerHTML = "User Information: ";
+        alert("user logged out");
+    }
+    
+</script>
+<body>
+    <div class="signup">
+        <h6>SignUp</h6>
+        <input id="signup-username" type="text" placeholder="Username">
+        <input id="signup-password" type="password" placeholder="password">
+        <button onclick="signup()">Submit</button>
+    </div>
+    <div class="signin">
+        <h6>SignIn</h6>
+        <input id="signin-username" type="text" placeholder="Username">
+        <input id="signin-password" type="password" placeholder="password">
+        <button onclick="signin()">Submit</button>
+    </div>
+    <p id="information">User Information: </p>
+    <button onclick="logout()">Logout</button>
+</body>
+</html>
+
+<!-- passportJS for google authenticaton -->

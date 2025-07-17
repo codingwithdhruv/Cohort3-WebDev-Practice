@@ -1,0 +1,71 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Env and build files
+.env
+.env.local
+.env.*.local
+dist/
+build/
+coverage/
+out/
+.tmp/
+.temp/
+.cache/
+
+# Logs
+logs/
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Compiled source
+*.pyc
+*.pyo
+*.exe
+*.out
+*.class
+
+# Test output
+jest-html-reporters-*
+test-output/
+
+# Optional: Mac system files
+.AppleDouble
+.LSOverride
+Icon?
+
+# Optional: VS Code locally saved state
+.vscode/*.code-workspace
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+
+# Optional: Next.js
+.next/
+
+# Optional: Svelte
+.svelte-kit/
+
+# Optional: TypeScript build output
+*.tsbuildinfo
+
+# Optional: Storybook build output
+storybook-static/
